@@ -44,5 +44,5 @@ THEN I am prompted to select an employee to update and their new role and this i
 ```
 
 ## Application In Action 
-(video link)
+[Link to Video](https://youtu.be/EXM4ZBAgkqc)
 
