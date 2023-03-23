@@ -54,10 +54,10 @@ function startProgram() {
         viewAllEmployees();
         break;
       case "Add a Deparment":
-        console.log("add dept");
+        addDept();
         break;
       case "Add a Role":
-        console.log("add role");
+        addRole();
         break;
       case "Add an Employee":
         console.log("add employee");
@@ -98,6 +98,49 @@ function viewAllEmployees() {
       )
       startProgram();
 };
+
+function addDept() {
+  inquirer
+    .prompt({
+      type: "input",
+      message: "What do you want to name the department?",
+      name: "deptName",
+    })
+    .then(function (response) {
+      const newDept = response.deptName;
+      let sql = `INSERT INTO department (department_name) VALUES("${newDept}")`
+      db.query(sql);
+      viewAllDepts();
+    });
+}
+
+function addRole() {
+  inquirer
+    .prompt([{
+      type: "input",
+      message: "What job position would you like to add?",
+      name: "roleName",
+    },
+    {
+      type: "number",
+      message: "What is the salary for this role?",
+      name: "roleSalary",
+    },
+    {
+      type: "number",
+      message: "What is the deparment id you would like to use?",
+      name: "roleNumber",
+    }])
+    .then(function (response) {
+      const newRole = response.roleName;
+      const roleSalary = response.roleSalary;
+      const roleNumber = response.roleNumber;
+
+      let roleSql = `INSERT INTO job (title, salary, deparment_id) VALUES("${newRole}",${roleSalary},${roleNumber})`
+      db.query(roleSql);
+      viewAllRoles();
+    });
+}
 
 app.use((req, res) => {
     res.status(404).end();
