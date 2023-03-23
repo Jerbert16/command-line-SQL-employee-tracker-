@@ -63,7 +63,7 @@ function startProgram() {
         addEmployee();
         break;
       case "Update Employee Role":
-        console.log("update employee");
+        updateEmployee();
         break;
     }
   });
@@ -194,7 +194,8 @@ function updateEmployee() {
     .prompt([
       {
         type: "input",
-        message: "What is the last name of the employee whose role you wish to change?",
+        message:
+          "What is the last name of the employee whose role you wish to change?",
         name: "employeeLastName",
       },
       {
@@ -212,7 +213,6 @@ function updateEmployee() {
         message: "What is the role's id number?",
         name: "newRoleNumber",
       },
-
     ])
     .then(function (response) {
       const employeeLastName = response.employeeLastName;
@@ -220,7 +220,11 @@ function updateEmployee() {
       const newSalary = response.newSalary;
       const newRoleNumber = response.newRoleNumber;
 
-      let UpdateEmployeeSql = `UPDATE employee`;
+      let UpdateEmployeeSql = `UPDATE employee
+      SET employee_role = "${newRole}",
+      salary = ${newSalary},
+      role_id = ${newRoleNumber}
+      WHERE last_name = "${employeeLastName}"`;
       db.query(UpdateEmployeeSql);
       viewAllEmployees();
     });
