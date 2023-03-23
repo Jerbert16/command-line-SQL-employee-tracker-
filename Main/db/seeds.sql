@@ -20,13 +20,13 @@ VALUES ("Sr. Copywriter", 105000, 1),
        ("Sales Associate", 77000, 7),
        ("Heavy Equipment Service Tech", 97000, 8);
 
-       INSERT INTO employee (first_name, last_name, role_id)
-VALUES ("Waylon", "Rhodes", 1),
-       ("Gianna", "Tucci", 2),
-       ("Jerome", "Banago", 3),
-       ("Billy-Bob", "Fox", 4),
-       ("Rojilio", "Lopez", 5),
-       ("Joey", "Denino", 6),
-       ("Alice", "Williams", 7),
-       ("Jenny", "McAdams", 8);
+       INSERT INTO employee (first_name, last_name, employee_role, their_dept, salary, manager, role_id)
+VALUES ("Waylon", "Rhodes", "Sr. Copywriter", "Marketing", 105000, "Bill", 1),
+       ("Gianna", "Tucci", "Sr. Financial Analyst", "Finance", 103000, "Bob", 2),
+       ("Jerome", "Banago", "Engineering Team Lead", "Engineering", 156000, "Jane", 3),
+       ("Billy-Bob", "Fox","Sr. HR Specialist", "Human Resources", 87000, "Hank", 4),
+       ("Rojilio", "Lopez", "Head Legal Counsel", "Legal", 175000, "Sarah", 5),
+       ("Joey", "Denino", "Customer Service Rep", "Customer Service", 57000, "Bri", 6),
+       ("Alice", "Williams", "Sales Associate", "Sales", 77000, "Alejandra", 7),
+       ("Jenny", "McAdams", "Heavy Equipment Service Tech", "Maintenance", 97000, "Jack", 8);
   
