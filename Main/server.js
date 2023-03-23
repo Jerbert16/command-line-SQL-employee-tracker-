@@ -1,3 +1,4 @@
+// require express, mysql, and inquirer to use
 const express = require("express");
 const mysql = require("mysql2");
 const inquirer = require("inquirer");
@@ -8,6 +9,7 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+// connect to sql database below
 const db = mysql.createConnection(
   {
     host: "127.0.0.1",
@@ -20,6 +22,7 @@ const db = mysql.createConnection(
   console.log(`Connected to the employees_db database.`)
 );
 
+// questions for inquirer
 const questions = [
   {
     type: "list",
@@ -38,7 +41,7 @@ const questions = [
 ];
 
 startProgram();
-
+// function that begins application, uses inquirer
 function startProgram() {
   inquirer.prompt(questions).then((responses) => {
     const optnChoice = responses.viewOptns;
@@ -69,7 +72,10 @@ function startProgram() {
   });
 }
 
+// corresponding functions to the 'switch' if/then/else above
+
 function viewAllDepts() {
+  // connect to db via db query to run SQL commands
   db.query("SELECT * FROM department", function (err, results) {
     console.log(results);
   });
@@ -225,6 +231,7 @@ function updateEmployee() {
       salary = ${newSalary},
       role_id = ${newRoleNumber}
       WHERE last_name = "${employeeLastName}"`;
+      // see above for UPDATE command which is a slightly different syntax than INSERT
       db.query(UpdateEmployeeSql);
       viewAllEmployees();
     });
